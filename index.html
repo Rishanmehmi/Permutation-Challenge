@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="main.css">
+<style>
+    body
+    {
+        font-size: 25px;
+    }
+    input
+    {
+        height: 50px;
+        width: 150px;
+        font-size: 40px;
+        border: 2px solid grey;
+        border-radius: 4px;
+        margin-top: 25px;
+    }
+    button
+    {
+        height: 50px;
+        width: 150px;
+        border: 2px solid grey;
+        border-radius: 5px;
+        margin-top: 25px;
+    }
+    
+</style>
+<body>
+   <input type="number" id="boys" placeholder="boys"><br>
+    <input type="number" id="girls" placeholder="girls"><br>
+    <input type="number" id="pairs" placeholder="pairs"><br>
+    <button onclick="getData();">GetData</button><br>
+  
+    <script>
+         function getData()
+        {
+        var x1 =document.getElementById('boys').value;
+        var x2 = document.getElementById('girls').value;
+        var x3 = document.getElementById('pairs').value;
+        if(x3%2!==0)
+        {
+            alert('not a valid pair');
+        }
+        if(x3>=2)// if no. of selections is more than a pair
+        {
+            x3 = x3/2;// seting equal boys and girls
+        }
+        var arc = x1+x2;
+        console.log(x3);
+        var temp1 = x1-x3;
+        if(temp1===0)
+        {
+            window.alert('count all boys');
+        }
+        console.log(temp1);
+        //finding permutations of boys.
+        if(temp1<0)
+        {
+            window.alert('not possible pairing');
+        }
+        temp2=1;
+        do
+        {
+            temp2 = temp2*x1;
+            x1--;
+            
+        }while(x1>1);
+        console.log(temp2);// factorial n for boys.
+        var temp3 =1;
+        var temp9 = x3
+        do
+        {
+            temp3 = temp3 *temp9;
+            temp9--;
+        }while(temp9>1);
+    console.log(temp3);// factorial r for boys.
+        var temp4 = 1;
+        do
+        {
+            temp4 = temp4 * temp1 ;
+            temp1--;
+        }while(temp1>1); 
+        console.log(temp4);// factorial n-r for boys.
+        var boysP = temp2/(temp3*temp4);//permutation of boys.
+        console.log(boysP);
+        var temp5=1;
+        var temp11 = x2;
+        do
+        {
+            temp5 = temp5*temp11;
+            temp11--;
+            
+        }while(temp11>1);
+        console.log(temp5);
+        var temp6 =1;
+        var temp10 = x3
+        do
+        {
+            temp6 = temp6*temp10;
+            temp10--;
+        }while(temp10>1);
+    console.log(temp6);
+    
+        var temp7 = 1;
+        var temp8 = x2-x3;
+        console.log(x2);
+        console.log(x3);
+        console.log(temp8);
+        if(temp8===0)
+        {
+            window.alert('count all girls');
+        }
+        do
+        {
+            temp7 = temp7 * temp8 ;
+            temp8--;
+        }while(temp8>1);
+        console.log(temp7);
+        var girlsP = temp2/(temp3*temp4);
+        console.log(girlsP);
+        var result = boysP*girlsP*x3;
+        console.log(result);
+        document.getElementById('resalt').value = result;
+        return result;
+    }
+    </script>
+    <input type="number" id="resalt" placeholder="result">
+</body>
+</html>
